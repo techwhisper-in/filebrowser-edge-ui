@@ -37,8 +37,6 @@ export default defineConfig(({ command }) => {
             ws: true,
           },
           "/api": "http://127.0.0.1:8080",
-          "/share": "http://127.0.0.1:8080",
-          "/public": "http://127.0.0.1:8080",
         },
       },
       preview: {
@@ -50,8 +48,6 @@ export default defineConfig(({ command }) => {
             ws: true,
           },
           "/api": "http://127.0.0.1:8080",
-          "/share": "http://127.0.0.1:8080",
-          "/public": "http://127.0.0.1:8080",
         },
       },
     };
@@ -70,8 +66,6 @@ export default defineConfig(({ command }) => {
             ws: true,
           },
           "/api": "http://127.0.0.1:8080",
-          "/share": "http://127.0.0.1:8080",
-          "/public": "http://127.0.0.1:8080",
         },
       },
       build: {
