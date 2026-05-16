@@ -15,5 +15,11 @@ export async function onRequest(context) {
     proxyRequest.headers.set('CF-Access-Client-Secret', context.env.CF_ACCESS_CLIENT_SECRET);
   }
 
+  // CRITICAL: Forward the user's verified email from Cloudflare Access to the Backend
+  const userEmail = request.headers.get('Cf-Access-Authenticated-User-Email');
+  if (userEmail) {
+    proxyRequest.headers.set('Cf-Access-Authenticated-User-Email', userEmail);
+  }
+
   return fetch(proxyRequest);
 }
