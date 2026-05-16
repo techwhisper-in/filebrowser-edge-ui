@@ -50,6 +50,7 @@ export default defineConfig(({ command }) => {
       base: "/",
       preview: {
         port: 4173,
+        allowedHosts: true,
         proxy: {
           "/api/command": {
             target: "ws://127.0.0.1:8080",
