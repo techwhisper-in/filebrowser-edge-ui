@@ -47,10 +47,7 @@ export default defineConfig(({ command }) => {
     return {
       plugins,
       resolve,
-<<<<<<< Updated upstream
       base: "/",
-=======
-      base: "",
       preview: {
         port: 4173,
         proxy: {
@@ -63,7 +60,6 @@ export default defineConfig(({ command }) => {
           "/public": "http://127.0.0.1:8080",
         },
       },
->>>>>>> Stashed changes
       build: {
         rollupOptions: {
           input: {
