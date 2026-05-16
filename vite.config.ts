@@ -41,6 +41,19 @@ export default defineConfig(({ command }) => {
           "/public": "http://127.0.0.1:8080",
         },
       },
+      preview: {
+        port: 4173,
+        allowedHosts: true,
+        proxy: {
+          "/api/command": {
+            target: "ws://127.0.0.1:8080",
+            ws: true,
+          },
+          "/api": "http://127.0.0.1:8080",
+          "/share": "http://127.0.0.1:8080",
+          "/public": "http://127.0.0.1:8080",
+        },
+      },
     };
   } else {
     // command === 'build'
