@@ -16,9 +16,11 @@ export async function onRequest(context) {
   }
 
   // CRITICAL: Forward the user's verified email from Cloudflare Access to the Backend
-  const userEmail = request.headers.get('Cf-Access-Authenticated-User-Email');
+  // We must use a custom header name (X-Forwarded-Email) because Cloudflare Access
+  // on the API tunnel will strip the original Cf-Access header for Service Tokens!
+  const userEmail = request.headers.get('cf-access-authenticated-user-email');
   if (userEmail) {
-    proxyRequest.headers.set('Cf-Access-Authenticated-User-Email', userEmail);
+    proxyRequest.headers.set('X-Forwarded-Email', userEmail);
   }
 
   return fetch(proxyRequest);
