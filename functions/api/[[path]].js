@@ -23,5 +23,15 @@ export async function onRequest(context) {
     proxyRequest.headers.set('X-Forwarded-Email', userEmail);
   }
 
+  // DEBUG ROUTE: Let's check if the variables are actually loaded!
+  if (url.pathname === '/api/debug') {
+    return new Response(JSON.stringify({
+      hasClientId: !!context.env.CF_ACCESS_CLIENT_ID,
+      hasClientSecret: !!context.env.CF_ACCESS_CLIENT_SECRET,
+      backendUrl: BACKEND_TUNNEL_URL,
+      userEmail: userEmail || "Missing!"
+    }), { headers: { 'Content-Type': 'application/json' } });
+  }
+
   return fetch(proxyRequest);
 }
