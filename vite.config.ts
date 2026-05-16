@@ -33,10 +33,12 @@ export default defineConfig(({ command }) => {
       server: {
         proxy: {
           "/api/command": {
-            target: "ws://127.0.0.1:8081",
+            target: "ws://127.0.0.1:8080",
             ws: true,
           },
-          "/api": "http://127.0.0.1:8081",
+          "/api": "http://127.0.0.1:8080",
+          "/share": "http://127.0.0.1:8080",
+          "/public": "http://127.0.0.1:8080",
         },
       },
     };
@@ -45,7 +47,23 @@ export default defineConfig(({ command }) => {
     return {
       plugins,
       resolve,
+<<<<<<< Updated upstream
       base: "/",
+=======
+      base: "",
+      preview: {
+        port: 4173,
+        proxy: {
+          "/api/command": {
+            target: "ws://127.0.0.1:8080",
+            ws: true,
+          },
+          "/api": "http://127.0.0.1:8080",
+          "/share": "http://127.0.0.1:8080",
+          "/public": "http://127.0.0.1:8080",
+        },
+      },
+>>>>>>> Stashed changes
       build: {
         rollupOptions: {
           input: {
