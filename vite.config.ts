@@ -49,7 +49,7 @@ export default defineConfig(({ command }) => {
       build: {
         rollupOptions: {
           input: {
-            index: path.resolve(__dirname, "./public/index.html"),
+            index: path.resolve(__dirname, "./index.html"),
           },
           output: {
             manualChunks: (id) => {
@@ -63,17 +63,6 @@ export default defineConfig(({ command }) => {
               }
             },
           },
-        },
-      },
-      experimental: {
-        renderBuiltUrl(filename, { hostType }) {
-          if (hostType === "js") {
-            return { runtime: `window.__prependStaticUrl("${filename}")` };
-          } else if (hostType === "html") {
-            return `[{[ .StaticURL ]}]/${filename}`;
-          } else {
-            return { relative: true };
-          }
         },
       },
     };
